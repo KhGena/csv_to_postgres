@@ -1,0 +1,38 @@
+[2024-08-15T17:28:44.137+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-08-15T17:28:44.207+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: csv_to_postgres.csv_to_stg manual__2024-08-15T17:28:40.757689+00:00 [queued]>
+[2024-08-15T17:28:44.225+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: csv_to_postgres.csv_to_stg manual__2024-08-15T17:28:40.757689+00:00 [queued]>
+[2024-08-15T17:28:44.225+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-08-15T17:28:44.258+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): csv_to_stg> on 2024-08-15 17:28:40.757689+00:00
+[2024-08-15T17:28:44.268+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62: DeprecationWarning: This process (pid=185) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-08-15T17:28:44.274+0000] {standard_task_runner.py:64} INFO - Started process 187 to run task
+[2024-08-15T17:28:44.273+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'csv_to_postgres', 'csv_to_stg', 'manual__2024-08-15T17:28:40.757689+00:00', '--job-id', '35', '--raw', '--subdir', 'DAGS_FOLDER/main.py', '--cfg-path', '/tmp/tmp5kh7ov3j']
+[2024-08-15T17:28:44.276+0000] {standard_task_runner.py:91} INFO - Job 35: Subtask csv_to_stg
+[2024-08-15T17:28:44.399+0000] {task_command.py:426} INFO - Running <TaskInstance: csv_to_postgres.csv_to_stg manual__2024-08-15T17:28:40.757689+00:00 [running]> on host aa3ef9d15753
+[2024-08-15T17:28:44.571+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='gena' AIRFLOW_CTX_DAG_ID='csv_to_postgres' AIRFLOW_CTX_TASK_ID='csv_to_stg' AIRFLOW_CTX_EXECUTION_DATE='2024-08-15T17:28:40.757689+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-08-15T17:28:40.757689+00:00'
+[2024-08-15T17:28:44.574+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-08-15T17:28:44.596+0000] {base.py:84} INFO - Using connection ID 'db' for task execution.
+[2024-08-15T17:28:44.718+0000] {logging_mixin.py:188} INFO - Error occurred while loading data into платформы: (psycopg2.errors.InvalidSchemaName) schema "stg" does not exist
+LINE 2: CREATE TABLE stg."платформы" (
+                     ^
+
+[SQL: 
+CREATE TABLE stg."платформы" (
+	"название" TEXT, 
+	"активность" TEXT, 
+	"Сорт." BIGINT, 
+	"Дата изм." TEXT, 
+	id BIGINT
+)
+
+]
+(Background on this error at: https://sqlalche.me/e/14/f405)
+[2024-08-15T17:28:44.721+0000] {logging_mixin.py:188} INFO - Failed to process file /opt/***/source_data/платформы.csv.
+[2024-08-15T17:28:44.722+0000] {logging_mixin.py:188} INFO - Error: 'Connection' object has no attribute 'rollback'
+[2024-08-15T17:28:44.724+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-08-15T17:28:44.731+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-08-15T17:28:44.764+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=csv_to_postgres, task_id=csv_to_stg, run_id=manual__2024-08-15T17:28:40.757689+00:00, execution_date=20240815T172840, start_date=20240815T172844, end_date=20240815T172844
+[2024-08-15T17:28:44.816+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2024-08-15T17:28:44.862+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-08-15T17:28:44.865+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

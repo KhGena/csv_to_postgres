@@ -1,0 +1,50 @@
+[2024-08-15T18:14:12.234+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-08-15T18:14:12.296+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: csv_to_postgres.csv_to_stg manual__2024-08-15T18:14:07.810430+00:00 [queued]>
+[2024-08-15T18:14:12.317+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: csv_to_postgres.csv_to_stg manual__2024-08-15T18:14:07.810430+00:00 [queued]>
+[2024-08-15T18:14:12.319+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-08-15T18:14:12.358+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): csv_to_stg> on 2024-08-15 18:14:07.810430+00:00
+[2024-08-15T18:14:12.382+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62: DeprecationWarning: This process (pid=454) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-08-15T18:14:12.396+0000] {standard_task_runner.py:64} INFO - Started process 456 to run task
+[2024-08-15T18:14:12.395+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'csv_to_postgres', 'csv_to_stg', 'manual__2024-08-15T18:14:07.810430+00:00', '--job-id', '37', '--raw', '--subdir', 'DAGS_FOLDER/main.py', '--cfg-path', '/tmp/tmprgm6lb_x']
+[2024-08-15T18:14:12.402+0000] {standard_task_runner.py:91} INFO - Job 37: Subtask csv_to_stg
+[2024-08-15T18:14:12.530+0000] {task_command.py:426} INFO - Running <TaskInstance: csv_to_postgres.csv_to_stg manual__2024-08-15T18:14:07.810430+00:00 [running]> on host aa3ef9d15753
+[2024-08-15T18:14:12.834+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='gena' AIRFLOW_CTX_DAG_ID='csv_to_postgres' AIRFLOW_CTX_TASK_ID='csv_to_stg' AIRFLOW_CTX_EXECUTION_DATE='2024-08-15T18:14:07.810430+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-08-15T18:14:07.810430+00:00'
+[2024-08-15T18:14:12.839+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-08-15T18:14:12.872+0000] {base.py:84} INFO - Using connection ID 'db' for task execution.
+[2024-08-15T18:14:13.026+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/платформы.csv loaded into платформы.
+[2024-08-15T18:14:13.128+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/сотрудники.csv loaded into сотрудники.
+[2024-08-15T18:14:13.156+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/отрасли.csv loaded into отрасли.
+[2024-08-15T18:14:13.173+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/уровни_владения_ин_я.csv loaded into уровни_владения_ин_я.
+[2024-08-15T18:14:13.198+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/фреймворки.csv loaded into фреймворки.
+[2024-08-15T18:14:13.247+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/опыт_сотрудника_в_предметных_областях.csv loaded into опыт_сотрудника_в_предметных_областях.
+[2024-08-15T18:14:13.260+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/уровни_знаний_в_предметной_област.csv loaded into уровни_знаний_в_предметной_област.
+[2024-08-15T18:14:13.276+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/языки_программирования.csv loaded into языки_программирования.
+[2024-08-15T18:14:13.632+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/образование_пользователей.csv loaded into образование_пользователей.
+[2024-08-15T18:14:13.676+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/фреймворки_и_уровень_знаний_сотрудников.csv loaded into фреймворки_и_уровень_знаний_сотрудников.
+[2024-08-15T18:14:13.694+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/уровень_образования.csv loaded into уровень_образования.
+[2024-08-15T18:14:13.708+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/среды_разработки.csv loaded into среды_разработки.
+[2024-08-15T18:14:13.924+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/инструменты_и_уровень_знаний_сотрудника.csv loaded into инструменты_и_уровень_знаний_сотрудника.
+[2024-08-15T18:14:13.962+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/среды_разработки_и_уровень_знаний.csv loaded into среды_разработки_и_уровень_знаний.
+[2024-08-15T18:14:14.010+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/опыт_сотрудника_в_отраслях.csv loaded into опыт_сотрудника_в_отраслях.
+[2024-08-15T18:14:14.035+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/типы_систем.csv loaded into типы_систем.
+[2024-08-15T18:14:14.063+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/технологии.csv loaded into технологии.
+[2024-08-15T18:14:14.239+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/платформы_и_уровень_знаний_сотрудника.csv loaded into платформы_и_уровень_знаний_сотрудника.
+[2024-08-15T18:14:14.305+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/уровни_знаний.csv loaded into уровни_знаний.
+[2024-08-15T18:14:14.338+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/базы_данных.csv loaded into базы_данных.
+[2024-08-15T18:14:14.361+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/предметная_область.csv loaded into предметная_область.
+[2024-08-15T18:14:14.382+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/инструменты.csv loaded into инструменты.
+[2024-08-15T18:14:14.418+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/типы_систем_и_уровень_знаний_сотрудников.csv loaded into типы_систем_и_уровень_знаний_сотрудников.
+[2024-08-15T18:14:14.431+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/уровни_знаний_в_отрасли.csv loaded into уровни_знаний_в_отрасли.
+[2024-08-15T18:14:14.477+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/базы_данных_и_уровень_знаний_сотрудника.csv loaded into базы_данных_и_уровень_знаний_сотрудника.
+[2024-08-15T18:14:14.652+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/сертификаты_пользователей.csv loaded into сертификаты_пользователей.
+[2024-08-15T18:14:14.946+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/технологии_и_уровень_знаний_сотрудников.csv loaded into технологии_и_уровень_знаний_сотрудников.
+[2024-08-15T18:14:15.150+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/языки_программирования_и_уровень.csv loaded into языки_программирования_и_уровень.
+[2024-08-15T18:14:15.192+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/языки.csv loaded into языки.
+[2024-08-15T18:14:15.193+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-08-15T18:14:15.194+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-08-15T18:14:15.217+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=csv_to_postgres, task_id=csv_to_stg, run_id=manual__2024-08-15T18:14:07.810430+00:00, execution_date=20240815T181407, start_date=20240815T181412, end_date=20240815T181415
+[2024-08-15T18:14:15.284+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2024-08-15T18:14:15.317+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-08-15T18:14:15.323+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

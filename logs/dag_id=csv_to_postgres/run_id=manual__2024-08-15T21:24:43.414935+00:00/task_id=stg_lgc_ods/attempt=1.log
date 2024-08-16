@@ -1,0 +1,484 @@
+[2024-08-15T21:24:52.337+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-08-15T21:24:52.390+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: csv_to_postgres.stg_lgc_ods manual__2024-08-15T21:24:43.414935+00:00 [queued]>
+[2024-08-15T21:24:52.413+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: csv_to_postgres.stg_lgc_ods manual__2024-08-15T21:24:43.414935+00:00 [queued]>
+[2024-08-15T21:24:52.415+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-08-15T21:24:52.485+0000] {taskinstance.py:2330} INFO - Executing <Task(PostgresOperator): stg_lgc_ods> on 2024-08-15 21:24:43.414935+00:00
+[2024-08-15T21:24:52.499+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62: DeprecationWarning: This process (pid=2674) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-08-15T21:24:52.502+0000] {standard_task_runner.py:64} INFO - Started process 2676 to run task
+[2024-08-15T21:24:52.503+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'csv_to_postgres', 'stg_lgc_ods', 'manual__2024-08-15T21:24:43.414935+00:00', '--job-id', '50', '--raw', '--subdir', 'DAGS_FOLDER/main.py', '--cfg-path', '/tmp/tmp3qr_yew9']
+[2024-08-15T21:24:52.505+0000] {standard_task_runner.py:91} INFO - Job 50: Subtask stg_lgc_ods
+[2024-08-15T21:24:52.607+0000] {task_command.py:426} INFO - Running <TaskInstance: csv_to_postgres.stg_lgc_ods manual__2024-08-15T21:24:43.414935+00:00 [running]> on host aa3ef9d15753
+[2024-08-15T21:24:52.883+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='gena' AIRFLOW_CTX_DAG_ID='csv_to_postgres' AIRFLOW_CTX_TASK_ID='stg_lgc_ods' AIRFLOW_CTX_EXECUTION_DATE='2024-08-15T21:24:43.414935+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-08-15T21:24:43.414935+00:00'
+[2024-08-15T21:24:52.886+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-08-15T21:24:52.887+0000] {sql.py:282} INFO - Executing: 
+DO $$
+DECLARE
+    v_step TEXT;
+BEGIN
+        -- Truncate operations
+        v_step := 'Truncating ods.dbms';
+        TRUNCATE TABLE ods.dbms;
+
+        v_step := 'Truncating ods.dbms_employee_grade';
+        TRUNCATE TABLE ods.dbms_employee_grade;
+
+        v_step := 'Truncating ods.development_environments_employee_grade';
+        TRUNCATE TABLE ods.development_environments_employee_grade;
+
+        v_step := 'Truncating ods.development_environments';
+        TRUNCATE TABLE ods.development_environments;
+
+        v_step := 'Truncating ods.domain_knowledge_levels';
+        TRUNCATE TABLE ods.domain_knowledge_levels;
+
+        v_step := 'Truncating ods.domains';
+        TRUNCATE TABLE ods.domains;
+
+        v_step := 'Truncating ods.education_levels';
+        TRUNCATE TABLE ods.education_levels;
+
+        v_step := 'Truncating ods.employee_domain_experience';
+        TRUNCATE TABLE ods.employee_domain_experience;
+
+        v_step := 'Truncating ods.employee_industry_experience';
+        TRUNCATE TABLE ods.employee_industry_experience;
+
+        v_step := 'Truncating ods.industries';
+        TRUNCATE TABLE ods.industries;
+
+        v_step := 'Truncating ods.industry_knowledge_levels';
+        TRUNCATE TABLE ods.industry_knowledge_levels;
+
+        v_step := 'Truncating ods.grades';
+        TRUNCATE TABLE ods.grades;
+
+        v_step := 'Truncating ods.platforms';
+        TRUNCATE TABLE ods.platforms;
+
+        v_step := 'Truncating ods.platforms_employee_grade';
+        TRUNCATE TABLE ods.platforms_employee_grade;
+
+        v_step := 'Truncating ods.proficiency_levels';
+        TRUNCATE TABLE ods.proficiency_levels;
+
+        v_step := 'Truncating ods.system_types';
+        TRUNCATE TABLE ods.system_types;
+
+        v_step := 'Truncating ods.system_types_employee_grade';
+        TRUNCATE TABLE ods.system_types_employee_grade;
+
+        v_step := 'Truncating ods.technologies';
+        TRUNCATE TABLE ods.technologies;
+
+        v_step := 'Truncating ods.technologies_employee_grade';
+        TRUNCATE TABLE ods.technologies_employee_grade;
+
+        v_step := 'Truncating ods.tools';
+        TRUNCATE TABLE ods.tools;
+
+        v_step := 'Truncating ods.tools_employee_grade';
+        TRUNCATE TABLE ods.tools_employee_grade;
+
+        v_step := 'Truncating ods.user_certificates';
+        TRUNCATE TABLE ods.user_certificates;
+
+        v_step := 'Truncating ods.programming_languages_employee_grade';
+        TRUNCATE TABLE ods.prog_lang_employee_grade;
+
+        v_step := 'Truncating ods.programming_languages';
+        TRUNCATE TABLE ods.programming_languages;
+
+        v_step := 'Truncating ods.employees';
+        TRUNCATE TABLE ods.employees;
+		
+		-- Insert operations
+        -- Inserting into ods.dbms
+        v_step := 'Inserting into ods.dbms';
+        INSERT INTO ods.dbms(id, dbm, active, sort, updated_at)
+        SELECT 
+            id, 
+            old_id,
+            dbm::text, 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            sort::int4, 
+            TO_TIMESTAMP(updated_at, 'DD.MM.YYYY HH24:MI:SS')::timestamp
+        FROM lgc.dbms;
+
+        -- Inserting into ods.dbms_employee_grade
+        v_step := 'Inserting into ods.dbms_employee_grade';
+        INSERT INTO ods.dbms_employee_grade(id, employee_id, active, sort, updated_at, dbm_id, dt, grade_id)
+        SELECT 
+            id, 
+            old_id,
+            etl_func.extract_employee_id(employee_id) AS employee_id, 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            sort::int4, 
+            TO_TIMESTAMP(updated_at, 'DD.MM.YYYY HH24:MI:SS')::timestamp AS updated_at, 
+            etl_func.extract_skill_id(dbm_id) AS dbm_id, 
+            etl_func.extract_date_from_text(dt) AS dt, 
+            etl_func.extract_grade_id(grade_id) AS grade_id 
+        FROM lgc.dbms_employee_grade;
+
+        -- Inserting into ods.development_environments_employee_grade
+        v_step := 'Inserting into ods.development_environments_employee_grade';
+        INSERT INTO ods.development_environments_employee_grade(id, employee_id, active, sort, updated_at, "date", dev_environment_id, grade_id)
+        SELECT 
+            id, 
+            old_id,
+            etl_func.extract_employee_id(employee_id) AS employee_id, 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            sort::int4, 
+            TO_TIMESTAMP(updated_at, 'DD.MM.YYYY HH24:MI:SS')::timestamp AS updated_at, 
+            etl_func.extract_date_from_text(dt) AS dt,
+            etl_func.extract_skill_id(dev_environment_id) AS dev_environment_id, 
+            etl_func.extract_grade_id(grade_id) AS grade_id 
+        FROM lgc.development_environments_employee_grade;
+
+        -- Inserting into ods.development_environments
+        v_step := 'Inserting into ods.development_environments';
+        INSERT INTO ods.development_environments(id, dev_environment, active, sort, updated_at)
+        SELECT 
+            id, 
+            old_id,
+            dev_environment::text, 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            sort::int4, 
+            TO_TIMESTAMP(updated_at, 'DD.MM.YYYY HH24:MI:SS')::timestamp
+        FROM lgc.development_environments;
+
+        -- Inserting into ods.domain_knowledge_levels
+        v_step := 'Inserting into ods.domain_knowledge_levels';
+        INSERT INTO ods.domain_knowledge_levels(id, domain_knowledge_level, active, sort, updated_at)
+        SELECT 
+            id,
+            old_id,
+            domain_knowledge_level::text AS domain_knowledge_level, 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            sort::int4, 
+            TO_TIMESTAMP(updated_at, 'DD.MM.YYYY HH24:MI:SS')::timestamp
+        FROM lgc.domain_knowledge_levels;
+
+        -- Inserting into ods.domains
+        v_step := 'Inserting into ods.domains';
+        INSERT INTO ods.domains(id, "domain", active, sort, updated_at)
+        SELECT 
+            id, 
+            old_id,
+            "domain"::text AS "domain", 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            sort::int4, 
+            TO_TIMESTAMP(updated_at, 'DD.MM.YYYY HH24:MI:SS')::timestamp
+        FROM lgc.domains;
+
+        -- Inserting into ods.education_levels
+        v_step := 'Inserting into ods.education_levels';
+        INSERT INTO ods.education_levels(id, education_level, active, sort, updated_at)
+        SELECT 
+            id, 
+            old_id,
+            education_level::text, 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            sort::int4, 
+            TO_TIMESTAMP(updated_at, 'DD.MM.YYYY HH24:MI:SS')::timestamp
+        FROM lgc.education_levels;
+
+        -- Inserting into ods.employee_domain_experience
+        v_step := 'Inserting into ods.employee_domain_experience';
+        INSERT INTO ods.employee_domain_experience(id, employee_id, active, sort, updated_at, "date", domain_id, domain_knowledge_level_id)
+        SELECT 
+            id, 
+            old_id,
+            user_id AS employee_id, 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            sort::int4, 
+            TO_TIMESTAMP(updated_at, 'DD.MM.YYYY HH24:MI:SS')::timestamp, 
+            etl_func.extract_date_from_text(dt) AS dt,
+            etl_func.extract_skill_id("domain") AS "domain_id", 
+            etl_func.extract_grade_id(domain_knowledge_level) AS domain_knowledge_level_id
+        FROM lgc.employee_domain_experience;
+
+        -- Inserting into ods.employee_industry_experience
+        v_step := 'Inserting into ods.employee_industry_experience';
+        INSERT INTO ods.employee_industry_experience(id, employee_id, active, sort, updated_at, "date", industry_id, industry_knowledge_level_id)
+        SELECT 
+            id, 
+            old_id,
+            user_id AS employee_id, 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            sort::int4, 
+            TO_TIMESTAMP(updated_at, 'DD.MM.YYYY HH24:MI:SS')::timestamp, 
+            etl_func.extract_date_from_text(dt) AS dt,
+            etl_func.extract_skill_id(industry) AS industry_id, 
+            etl_func.extract_grade_id(industry_knowledge_level) AS industry_knowledge_level_id
+        FROM lgc.employee_industry_experience;
+
+        -- Inserting into ods.industries
+        v_step := 'Inserting into ods.industries';
+        INSERT INTO ods.industries(id, industry, active, sort, updated_at)
+        SELECT 
+            id, 
+            old_id,
+            industry::text, 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            sort::int4, 
+            TO_TIMESTAMP(updated_at, 'DD.MM.YYYY HH24:MI:SS')::timestamp
+        FROM lgc.industries;
+
+        -- Inserting into ods.industry_knowledge_levels
+        v_step := 'Inserting into ods.industry_knowledge_levels';
+        INSERT INTO ods.industry_knowledge_levels(id, industry_knowledge_level, active, sort, updated_at)
+        SELECT 
+            id, 
+            old_id,
+            industry_knowledge_level::text, 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            sort::int4, 
+            TO_TIMESTAMP(updated_at, 'DD.MM.YYYY HH24:MI:SS')::timestamp
+        FROM lgc.industry_knowledge_levels;
+
+        -- Inserting into ods.grades
+        v_step := 'Inserting into ods.grades';
+        INSERT INTO ods.grades(id, grade, active, sort, updated_at)
+        SELECT 
+            id, 
+            old_id,
+            grade::text, 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            sort::int4, 
+            TO_TIMESTAMP(updated_at, 'DD.MM.YYYY HH24:MI:SS')::timestamp
+        FROM lgc.grades;
+
+        -- Inserting into ods.platforms
+        v_step := 'Inserting into ods.platforms';
+        INSERT INTO ods.platforms(id, platform, active, sort, updated_at)
+        SELECT
+            id, 
+            old_id,
+            platform::text, 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            sort::int4, 
+            TO_TIMESTAMP(updated_at, 'DD.MM.YYYY HH24:MI:SS')::timestamp
+        FROM lgc.platforms;
+
+        -- Inserting into ods.platforms_employee_grade
+        v_step := 'Inserting into ods.platforms_employee_grade';
+        INSERT INTO ods.platforms_employee_grade(id, employee_id, active, sort, updated_at, "date", platform_id, grade_id)
+        SELECT 
+            id, 
+            old_id,
+            user_id, 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            sort::int4, 
+            TO_TIMESTAMP(updated_at, 'DD.MM.YYYY HH24:MI:SS')::timestamp, 
+            etl_func.extract_date_from_text(dt) AS dt,
+            etl_func.extract_skill_id(platform_id) AS platform_id, 
+            etl_func.extract_grade_id(grade_id) AS grade_id
+        FROM lgc.platforms_employee_grade;
+
+        -- Inserting into ods.proficiency_levels
+        v_step := 'Inserting into ods.proficiency_levels';
+        INSERT INTO ods.proficiency_levels(id, proficiency_level, active, sort, updated_at)
+        SELECT 
+            id, 
+            old_id,
+            proficiency_level::text AS proficiency_level, 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            sort::int4, 
+            TO_TIMESTAMP(updated_at, 'DD.MM.YYYY HH24:MI:SS')::timestamp
+        FROM lgc.proficiency_levels;
+
+        -- Inserting into ods.system_types
+        v_step := 'Inserting into ods.system_types';
+        INSERT INTO ods.system_types(id, system_type, active, sort, updated_at)
+        SELECT 
+            id,
+            old_id,
+            system_type::text, 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            sort::int4, 
+            TO_TIMESTAMP(updated_at, 'DD.MM.YYYY HH24:MI:SS')::timestamp
+        FROM lgc.system_types;
+
+        -- Inserting into ods.system_types_employee_grade
+        v_step := 'Inserting into ods.system_types_employee_grade';
+        INSERT INTO ods.system_types_employee_grade(id, employee_id, active, sort, updated_at, "date", system_type_id, grade_id)
+        SELECT 
+            id, 
+            old_id,
+            etl_func.extract_employee_id(employee_id) AS employee_id, 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            sort::int4, 
+            TO_TIMESTAMP(updated_at, 'DD.MM.YYYY HH24:MI:SS')::timestamp AS updated_at, 
+            etl_func.extract_date_from_text(dt) AS dt,
+            etl_func.extract_skill_id(system_type_id) AS system_type_id, 
+            etl_func.extract_grade_id(grade_id) AS grade_id
+        FROM lgc.system_types_employee_grade;
+
+        -- Inserting into ods.technologies
+        v_step := 'Inserting into ods.technologies';
+        INSERT INTO ods.technologies(id, technology, active, sort, updated_at)
+        SELECT 
+            id,
+            old_id,
+            technology::text, 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            sort::int4, 
+            TO_TIMESTAMP(updated_at, 'DD.MM.YYYY HH24:MI:SS')::timestamp AS updated_at
+        FROM lgc.technologies;
+
+        -- Inserting into ods.technologies_employee_grade
+        v_step := 'Inserting into ods.technologies_employee_grade';
+        INSERT INTO ods.technologies_employee_grade(id, employee_id, active, sort, updated_at, "date", technology_id, grade_id)
+        SELECT 
+            id, 
+            old_id,
+            etl_func.extract_employee_id(employee_id) AS employee_id, 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            sort::int4, 
+            TO_TIMESTAMP(updated_at, 'DD.MM.YYYY HH24:MI:SS')::timestamp AS updated_at,
+            etl_func.extract_date_from_text(dt) AS dt,
+            etl_func.extract_skill_id(technology_id) AS technology_id, 
+            etl_func.extract_grade_id(grade_id) AS grade_id
+        FROM lgc.technologies_employee_grade;
+
+        -- Inserting into ods.tools
+        v_step := 'Inserting into ods.tools';
+        INSERT INTO ods.tools(id, tool, active, sort, updated_at)
+        SELECT 
+            id, 
+            old_id,
+            tool::text, 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            sort::int4, 
+            TO_TIMESTAMP(updated_at, 'DD.MM.YYYY HH24:MI:SS')::timestamp AS updated_at
+        FROM lgc.tools;
+
+        -- Inserting into ods.tools_employee_grade
+        v_step := 'Inserting into ods.tools_employee_grade';
+        INSERT INTO ods.tools_employee_grade(id, employee_id, active, sort, updated_at, dt, tool_id, grade_id)
+        SELECT 
+            id, 
+            old_id,
+            etl_func.extract_employee_id(employee_id) AS employee_id, 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            sort::int4, 
+            TO_TIMESTAMP(updated_at, 'DD.MM.YYYY HH24:MI:SS')::timestamp AS updated_at,
+            etl_func.extract_date_from_text(dt) AS dt,
+            etl_func.extract_skill_id(tool_id) AS tool_id, 
+            etl_func.extract_grade_id(grade_id) AS grade_id
+        FROM lgc.tools_employee_grade;
+
+        -- Inserting into ods.user_certificates
+        v_step := 'Inserting into ods.user_certificates';
+        INSERT INTO ods.user_certificates(id, employee_id, active, sort, updated_at, certificate_year, certificate_name, issuing_organization)
+        SELECT 
+            id, 
+            old_id,
+            employee_id, 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            sort::int4, 
+            TO_TIMESTAMP(updated_at, 'DD.MM.YYYY HH24:MI:SS')::timestamp AS updated_at, 
+            certificate_year::int4, 
+            certificate_name, 
+            issuing_organization
+        FROM lgc.user_certificates;
+
+        -- Inserting into ods.prog_lang_employee_grade
+        v_step := 'Inserting into ods.programming_languages_employee_grade';
+        INSERT INTO ods.programming_languages_employee_grade(id, employee_id, active, sort, updated_at, "date", programming_language_id, grade_id)
+        SELECT 
+            id, 
+            old_id,
+            etl_func.extract_employee_id(employee_id) AS employee_id, 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            sort::int4, 
+            TO_TIMESTAMP(updated_at, 'DD.MM.YYYY HH24:MI:SS')::timestamp AS updated_at, 
+            etl_func.extract_date_from_text(dt) AS dt, 
+            etl_func.extract_skill_id(programming_language_id) AS programming_language_id,
+            etl_func.extract_grade_id(grade_id) AS grade_id
+        FROM lgc.prog_lang_employee_grade;
+
+        -- Inserting into ods.programming_languages
+        v_step := 'Inserting into ods.programming_languages';
+        INSERT INTO ods.programming_languages(id, programming_language, active, sort, updated_at)
+        SELECT 
+            id, 
+            old_id,
+            programming_language::text, 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            sort::int4, 
+            TO_TIMESTAMP(updated_at, 'DD.MM.YYYY HH24:MI:SS')::timestamp AS updated_at
+        FROM lgc.programming_languages;
+
+        -- Inserting into ods.employees
+        v_step := 'Inserting into ods.employees';
+        INSERT INTO ods.employees(id, old_id, birth_date, active, gender, last_name, first_name, last_authorization, "position", cfo, registration_date, update_date, department, email, login, company, city_of_residence)
+        SELECT 
+            id, 
+            old_id, 
+            birth_date::date, 
+            CASE WHEN active = 'Да' THEN true ELSE false END AS active, 
+            gender, 
+            last_name, 
+            first_name,
+            TO_TIMESTAMP(last_authorization, 'DD.MM.YYYY HH24:MI:SS')::timestamp AS last_authorization,
+            "position", 
+            cfo, 
+            registration_date,
+            updated_at, 
+            regexp_replace(departments, '^(\s*\.\s*)+', '') AS departments, 
+            email, 
+            login, 
+            company, 
+            city_of_residence
+        FROM lgc.employees;
+
+    EXCEPTION
+        WHEN OTHERS THEN
+            BEGIN
+				INSERT INTO err_log.stg_lgc_ods(v_step, err)
+			    VALUES (              
+			        v_step,                      
+			        SQLERRM                      
+			   );
+		    END;
+            ROLLBACK;
+        RAISE;
+END $$;
+[2024-08-15T21:24:52.907+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-08-15T21:24:52.931+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/common/sql/operators/sql.py", line 283, in execute
+    hook = self.get_db_hook()
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/common/sql/operators/sql.py", line 194, in get_db_hook
+    return self._hook
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/functools.py", line 995, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/providers/common/sql/operators/sql.py", line 153, in _hook
+    conn = BaseHook.get_connection(conn_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/hooks/base.py", line 83, in get_connection
+    conn = Connection.get_connection_from_secrets(conn_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/connection.py", line 519, in get_connection_from_secrets
+    raise AirflowNotFoundException(f"The conn_id `{conn_id}` isn't defined")
+airflow.exceptions.AirflowNotFoundException: The conn_id `postgres_default` isn't defined
+[2024-08-15T21:24:52.958+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=csv_to_postgres, task_id=stg_lgc_ods, run_id=manual__2024-08-15T21:24:43.414935+00:00, execution_date=20240815T212443, start_date=20240815T212452, end_date=20240815T212452
+[2024-08-15T21:24:53.020+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 50 for task stg_lgc_ods (The conn_id `postgres_default` isn't defined; 2676)
+[2024-08-15T21:24:53.042+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2024-08-15T21:24:53.093+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2024-08-15T21:24:53.099+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

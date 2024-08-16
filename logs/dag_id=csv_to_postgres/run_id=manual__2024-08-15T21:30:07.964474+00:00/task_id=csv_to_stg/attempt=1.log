@@ -1,0 +1,40 @@
+[2024-08-15T21:30:12.734+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2024-08-15T21:30:12.784+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: csv_to_postgres.csv_to_stg manual__2024-08-15T21:30:07.964474+00:00 [queued]>
+[2024-08-15T21:30:12.807+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: csv_to_postgres.csv_to_stg manual__2024-08-15T21:30:07.964474+00:00 [queued]>
+[2024-08-15T21:30:12.808+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2024-08-15T21:30:12.845+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): csv_to_stg> on 2024-08-15 21:30:07.964474+00:00
+[2024-08-15T21:30:12.861+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62: DeprecationWarning: This process (pid=2743) is multi-threaded, use of fork() may lead to deadlocks in the child.
+  pid = os.fork()
+
+[2024-08-15T21:30:12.866+0000] {standard_task_runner.py:64} INFO - Started process 2745 to run task
+[2024-08-15T21:30:12.866+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'csv_to_postgres', 'csv_to_stg', 'manual__2024-08-15T21:30:07.964474+00:00', '--job-id', '51', '--raw', '--subdir', 'DAGS_FOLDER/main.py', '--cfg-path', '/tmp/tmpj85hmvma']
+[2024-08-15T21:30:12.870+0000] {standard_task_runner.py:91} INFO - Job 51: Subtask csv_to_stg
+[2024-08-15T21:30:12.994+0000] {task_command.py:426} INFO - Running <TaskInstance: csv_to_postgres.csv_to_stg manual__2024-08-15T21:30:07.964474+00:00 [running]> on host aa3ef9d15753
+[2024-08-15T21:30:13.218+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='gena' AIRFLOW_CTX_DAG_ID='csv_to_postgres' AIRFLOW_CTX_TASK_ID='csv_to_stg' AIRFLOW_CTX_EXECUTION_DATE='2024-08-15T21:30:07.964474+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-08-15T21:30:07.964474+00:00'
+[2024-08-15T21:30:13.221+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2024-08-15T21:30:13.244+0000] {base.py:84} INFO - Using connection ID 'db' for task execution.
+[2024-08-15T21:30:13.335+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/платформы.csv loaded into платформы.
+[2024-08-15T21:30:13.422+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/сотрудники.csv loaded into сотрудники.
+[2024-08-15T21:30:13.457+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/отрасли.csv loaded into отрасли.
+[2024-08-15T21:30:13.482+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/уровни_владения_ин_я.csv loaded into уровни_владения_ин_я.
+[2024-08-15T21:30:13.681+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/платформы_и_уровень_знаний_сотруд.csv loaded into платформы_и_уровень_знаний_сотруд.
+[2024-08-15T21:30:13.710+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/фреймворки.csv loaded into фреймворки.
+[2024-08-15T21:30:13.742+0000] {logging_mixin.py:188} INFO - Data from /opt/***/source_data/уровни_знаний_в_предметной_област.csv loaded into уровни_знаний_в_предметной_област.
+[2024-08-15T21:30:13.784+0000] {logging_mixin.py:188} INFO - Error occurred while loading data into фреймворки_и_уровень_знаний_сотру: (psycopg2.errors.UndefinedColumn) column "Типы систем" of relation "фреймворки_и_уровень_знаний_сотру" does not exist
+LINE 1: ..., "активность", "Сорт.", "Дата изм.", id, "дата", "Типы сист...
+                                                             ^
+
+[SQL: INSERT INTO stg."фреймворки_и_уровень_знаний_сотру" ("название", "активность", "Сорт.", "Дата изм.", id, "дата", "Типы систем", "Уровень знаний") VALUES (%(название)s, %(активность)s, %(Сорт.)s, %(Дата_изм.)s, %(id)s, %(дата)s, %(Типы_систем)s, %(Уровень_знаний)s)]
+[parameters: ({'название': 'User:1335', 'активность': 'Да', 'Сорт.': 500, 'Дата_изм.': '10.01.2024 12:05:40', 'id': 313772, 'дата': '21.11.2022', 'Типы_систем': 'BI (Business Intelligence) [115644]', 'Уровень_знаний': 'Middle [115639]'}, {'название': 'User:1335', 'активность': 'Да', 'Сорт.': 500, 'Дата_изм.': '10.01.2024 12:05:40', 'id': 313773, 'дата': '21.11.2022', 'Типы_систем': 'СЭД (Система электронного документооборота) [115648]', 'Уровень_знаний': 'Junior [115638]'}, {'название': 'User:3978', 'активность': 'Да', 'Сорт.': 500, 'Дата_изм.': '09.01.2024 11:46:59', 'id': 313486, 'дата': '09.01.2024', 'Типы_систем': 'CRM (Customer Relationship Management) [115647]', 'Уровень_знаний': 'Middle [115639]'}, {'название': 'User:3978', 'активность': 'Да', 'Сорт.': 500, 'Дата_изм.': '09.01.2024 11:46:59', 'id': 313487, 'дата': '09.01.2024', 'Типы_систем': 'BI (Business Intelligence) [115644]', 'Уровень_знаний': 'Junior [115638]'}, {'название': 'User:3978', 'активность': 'Да', 'Сорт.': 500, 'Дата_изм.': '09.01.2024 11:46:59', 'id': 313488, 'дата': '09.01.2024', 'Типы_систем': 'ERP (Enterprice Resource Planning) [115642]', 'Уровень_знаний': 'Novice [115637]'}, {'название': 'User:4506', 'активность': 'Да', 'Сорт.': 500, 'Дата_изм.': '08.01.2024 23:56:32', 'id': 313362, 'дата': '08.01.2024', 'Типы_систем': 'BI (Business Intelligence) [115644]', 'Уровень_знаний': 'Junior [115638]'}, {'название': 'User:4563', 'активность': 'Да', 'Сорт.': 500, 'Дата_изм.': '08.01.2024 13:31:10', 'id': 313258, 'дата': '08.01.2024', 'Типы_систем': 'BI (Business Intelligence) [115644]', 'Уровень_знаний': 'Junior [115638]'}, {'название': 'User:1430', 'активность': 'Да', 'Сорт.': 500, 'Дата_изм.': '29.12.2023 12:05:33', 'id': 312718, 'дата': '01.12.2020', 'Типы_систем': 'BI (Business Intelligence) [115644]', 'Уровень_знаний': 'Middle [115639]'}  ... displaying 10 of 278 total bound parameter sets ...  {'название': 'User:1702', 'активность': 'Да', 'Сорт.': 500, 'Дата_изм.': '24.03.2021 16:12:02', 'id': 151853, 'дата': None, 'Типы_систем': 'SCM (Supply Chain Management) [115646]', 'Уровень_знаний': 'Junior [115638]'}, {'название': 'User:2735', 'активность': 'Да', 'Сорт.': 500, 'Дата_изм.': '11.01.2021 10:52:34', 'id': 147622, 'дата': None, 'Типы_систем': 'BI (Business Intelligence) [115644]', 'Уровень_знаний': 'Middle [115639]'})]
+(Background on this error at: https://sqlalche.me/e/14/f405)
+[2024-08-15T21:30:13.785+0000] {logging_mixin.py:188} INFO - Failed to process file /opt/***/source_data/фреймворки_и_уровень_знаний_сотру.csv.
+[2024-08-15T21:30:13.786+0000] {logging_mixin.py:188} INFO - Error: 'Connection' object has no attribute 'rollback'
+[2024-08-15T21:30:13.789+0000] {python.py:237} INFO - Done. Returned value was: None
+[2024-08-15T21:30:13.791+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2024-08-15T21:30:13.812+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=csv_to_postgres, task_id=csv_to_stg, run_id=manual__2024-08-15T21:30:07.964474+00:00, execution_date=20240815T213007, start_date=20240815T213012, end_date=20240815T213013
+[2024-08-15T21:30:13.850+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2024-08-15T21:30:13.870+0000] {warnings.py:112} WARNING - /home/***/.local/lib/python3.12/site-packages/***/models/baseoperator.py:1297: AirflowProviderDeprecationWarning: Call to deprecated class PostgresOperator. (Please use `***.providers.common.sql.operators.sql.SQLExecuteQueryOperator`.Also, you can provide `hook_params={'schema': <database>}`.)
+  result = cls.__new__(cls)
+
+[2024-08-15T21:30:13.901+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2024-08-15T21:30:13.906+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
