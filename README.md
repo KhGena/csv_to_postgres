@@ -16,8 +16,9 @@ docker compose up airflow-init
 ```
 
 4. Запустите Airflow:
+```bash
 docker-compose up
-
+```
 5. Создание схем, таблиц, представлений не добавлено в оркестрацию. Скрипты для создания слоев находятся в папке DDL.
 ct - create table
 cv - create view
@@ -27,4 +28,4 @@ cle - create error log table
 
 7. Схема DM.
 
-![Схема DM]()
+![Схема DM](pic/g_dm_dep.png)
