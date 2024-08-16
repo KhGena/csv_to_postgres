@@ -1,4 +1,4 @@
-logs
+logs/
 config
 __pycache__
 plugins
